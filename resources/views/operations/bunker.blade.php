@@ -70,7 +70,7 @@
 
                 <div class="title-row">
                     <h1 class="title"> BUNKER </h1>
-                    <span class="title-side">-Resistance Headquarters</span>
+                    <span class="title-side">-YoRHa Headquarters</span>
                 </div>
 
                 <p class="description">
