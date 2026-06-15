@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory - NieR: Automata Operations</title>
+    <title>YoRHa - Inventory</title>
 
     @vite([
     'resources/sass/app.scss',
