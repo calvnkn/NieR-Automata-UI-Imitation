@@ -45,12 +45,18 @@
                 transparent 4px);
     }
 
+    /* ---------- NAV ---------- */
     .yorha-nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 18px 40px;
         border-bottom: 4px solid var(--yorha-dark);
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
     }
 
     .brand img {
@@ -117,11 +123,13 @@
         background: var(--yorha-dark);
     }
 
+    /* ---------- PANELS ---------- */
     .yorha-panel {
         background: var(--yorha-panel);
         border: 4px solid var(--yorha-border);
         box-shadow: 8px 8px 0 rgba(0, 0, 0, .15);
         align-self: start;
+        height: auto;
     }
 
     .row {
@@ -140,6 +148,105 @@
         padding: 30px;
     }
 
+    /* ---------- FORMS ---------- */
+    .access-column {
+        max-width: 400px;
+    }
+
+    .login-body {
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 3px solid var(--yorha-border);
+        background: var(--yorha-light);
+        outline: none;
+    }
+
+    .login-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .forgot-link {
+        color: var(--yorha-dark);
+        text-decoration: none;
+        font-size: .9rem;
+        transition: .2s;
+    }
+
+    .forgot-link:hover {
+        text-decoration: underline;
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .yorha-btn {
+        background: var(--yorha-dark);
+        color: var(--yorha-light);
+        border: none;
+        padding: 12px 30px;
+        cursor: pointer;
+        transition: .2s;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .yorha-btn:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 5px 5px 0 rgba(0, 0, 0, .2);
+    }
+
+    .yorha-btn-link {
+        background: var(--yorha-dark);
+        color: var(--yorha-light);
+        border: none;
+        padding: 12px 30px;
+        cursor: pointer;
+        transition: .2s;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .yorha-btn-link:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 5px 5px 0 rgba(0, 0, 0, .2);
+    }
+
+    .yorha-btn-outline {
+        background: transparent;
+        color: var(--yorha-dark);
+        border: 3px solid var(--yorha-dark);
+        padding: 9px 27px;
+        cursor: pointer;
+        transition: .2s;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .yorha-btn-outline:hover {
+        background: var(--yorha-dark);
+        color: var(--yorha-light);
+    }
+
+    /* ---------- TITLES ---------- */
     .title-row {
         display: flex;
         align-items: flex-end;
@@ -169,6 +276,7 @@
         max-width: 700px;
     }
 
+    /* ---------- CARDS ---------- */
     .operation-card {
         background: var(--yorha-panel);
         border: 4px solid var(--yorha-border);
@@ -201,84 +309,22 @@
         color: var(--yorha-dark);
     }
 
-    .operation-card ul,
-    .panel-body ul {
+    .operation-card ul {
         list-style: none;
         margin-bottom: 30px;
     }
 
-    .operation-card li,
-    .panel-body ul li {
+    .operation-card li {
         padding: 12px 0;
         border-bottom: 1px solid rgba(0, 0, 0, .15);
     }
 
-    .operation-card li:last-child,
-    .panel-body ul li:last-child {
+    .operation-card li:last-child {
         border-bottom: none;
-    }
-
-    .yorha-btn,
-    .yorha-btn-link,
-    .yorha-btn-outline {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 30px;
-        font-size: 1rem;
-        font-weight: bold;
-        letter-spacing: 1px;
-        line-height: 1;
-        cursor: pointer;
-        text-decoration: none;
-        transition: .2s;
-        border: none;
-        white-space: nowrap;
-    }
-
-    .yorha-btn {
-        background: var(--yorha-dark);
-        color: var(--yorha-light);
-    }
-
-    .yorha-btn-link {
-        background: var(--yorha-dark);
-        color: var(--yorha-light);
-    }
-
-    .yorha-btn-outline {
-        background: transparent;
-        color: var(--yorha-dark);
-        border: 3px solid var(--yorha-dark);
-        padding: 9px 27px;
-    }
-
-    .yorha-btn:hover,
-    .yorha-btn-link:hover,
-    .yorha-btn-outline:hover {
-        transform: translate(-3px, -3px);
-        box-shadow: 5px 5px 0 rgba(0, 0, 0, .2);
-        color: var(--yorha-light);
-    }
-
-    .yorha-btn-outline:hover {
-        background: var(--yorha-dark);
-    }
-
-    .btn-row {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
-    }
-
-    .btn-row form {
-        margin: 0;
     }
 
     .card-actions {
         display: flex;
-        align-items: center;
         gap: 10px;
         flex-wrap: wrap;
     }
@@ -287,60 +333,12 @@
         margin: 0;
     }
 
-    .card-actions .yorha-btn,
-    .card-actions .yorha-btn-link {
-        min-width: 120px;
-        text-align: center;
-    }
-
-    .form-group {
-        margin-bottom: 25px;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 8px;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 12px;
-        border: 3px solid var(--yorha-border);
-        background: var(--yorha-light);
-        outline: none;
-    }
-
-    .form-control:focus {
-        box-shadow: 0 0 0 2px rgba(87, 82, 71, .25);
-    }
-
-    .login-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 15px;
-        margin-top: 10px;
-    }
-
-    .forgot-link {
-        color: var(--yorha-dark);
-        text-decoration: none;
-        font-size: .9rem;
-    }
-
-    .forgot-link:hover {
-        text-decoration: underline;
-    }
-
+    /* ---------- STATUS / MESSAGES ---------- */
     .status-message {
-        padding: 0;
+        padding: 15px 25px;
+        color: var(--yorha-green);
         font-weight: bold;
         letter-spacing: 1px;
-        color: var(--yorha-green);
-    }
-
-    .status-message.is-error {
-        color: var(--yorha-red);
     }
 
     .error-list {
@@ -353,7 +351,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
-        margin: 0 0 30px;
+        margin: 20px 0 30px;
     }
 
     .status-box {
@@ -376,19 +374,27 @@
     }
 
     .status-yes,
-    .status-good { color: var(--yorha-green); }
+    .status-good {
+        color: var(--yorha-green);
+    }
 
     .status-no,
-    .status-bad  { color: var(--yorha-red); }
+    .status-bad {
+        color: var(--yorha-red);
+    }
 
-    .status-warn { color: var(--yorha-amber); }
+    .status-warn {
+        color: var(--yorha-amber);
+    }
 
+    /* ---------- TABLES ---------- */
     table {
         width: 100%;
         border-collapse: collapse;
     }
 
-    th, td {
+    th,
+    td {
         padding: 18px;
         border-bottom: 1px solid rgba(0, 0, 0, .2);
         text-align: center;
@@ -399,6 +405,7 @@
         text-align: left;
     }
 
+    /* ---------- PROGRESS BARS ---------- */
     .progress-track {
         width: 100%;
         height: 18px;
@@ -425,6 +432,7 @@
         letter-spacing: 1px;
     }
 
+    /* ---------- BADGES / TAGS ---------- */
     .tag {
         display: inline-block;
         padding: 4px 12px;
@@ -433,20 +441,24 @@
         text-transform: uppercase;
         border: 2px solid var(--yorha-dark);
         background: var(--yorha-light);
-        margin-right: 6px;
-        margin-bottom: 4px;
     }
 
-    .tag-good  { border-color: var(--yorha-green); color: var(--yorha-green); }
-    .tag-bad   { border-color: var(--yorha-red);   color: var(--yorha-red);   }
-    .tag-warn  { border-color: var(--yorha-amber); color: var(--yorha-amber); }
-
-    .section-label {
-        letter-spacing: 2px;
-        margin-bottom: 12px;
-        text-transform: uppercase;
+    .tag-good {
+        border-color: var(--yorha-green);
+        color: var(--yorha-green);
     }
 
+    .tag-bad {
+        border-color: var(--yorha-red);
+        color: var(--yorha-red);
+    }
+
+    .tag-warn {
+        border-color: var(--yorha-amber);
+        color: var(--yorha-amber);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
     @media (max-width: 992px) {
         .yorha-nav {
             flex-direction: column;
@@ -461,30 +473,71 @@
             gap: 10px;
         }
 
-        .title       { font-size: 3rem;   letter-spacing: 4px; line-height: 1.1; }
-        .title-side  { font-size: 1.2rem; letter-spacing: 2px; white-space: normal; }
-        .unit-level  { font-size: 2.5rem; }
+        .title {
+            font-size: 3rem;
+            letter-spacing: 4px;
+            line-height: 1.1;
+        }
 
-        .status-grid { grid-template-columns: 1fr; }
+        .title-side {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            white-space: normal;
+        }
 
-        th, td { padding: 12px; font-size: 0.9rem; }
+        .unit-level {
+            font-size: 2.5rem;
+        }
+
+        .status-grid {
+            grid-template-columns: 1fr;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            font-size: 0.9rem;
+        }
     }
 
     @media (max-width: 576px) {
-        .container-fluid { padding-left: 20px; padding-right: 20px; }
+        .container-fluid {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
 
-        .title       { font-size: 2.2rem; letter-spacing: 2px; }
-        .title-side  { font-size: 1rem; }
+        .title {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+
+        .title-side {
+            font-size: 1rem;
+        }
 
         .panel-header,
-        .card-header { font-size: 0.9rem; letter-spacing: 1px; }
+        .card-header {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
 
-        .unit-level  { font-size: 2rem; }
+        .unit-level {
+            font-size: 2rem;
+        }
 
-        .login-actions,
-        .btn-row,
-        .card-actions { flex-direction: column; align-items: flex-start; }
+        .login-actions {
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-        table { display: block; overflow-x: auto; white-space: nowrap; }
+        .card-actions {
+            flex-direction: column;
+        }
+
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
     }
 </style>

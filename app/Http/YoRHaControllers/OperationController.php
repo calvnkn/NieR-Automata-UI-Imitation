@@ -97,16 +97,4 @@ class OperationController extends Controller
             ->route('operations.show', $key)
             ->with('status', "Deployment order for {$operation['name']} has been transmitted.");
     }
-
-    public function login(Request $request)
-    {
-        $request->validate([
-            'unit_id'    => 'required|string|max:50',
-            'access_key' => 'required|string|min:6',
-        ]);
-
-        return redirect()
-            ->route('operations.index')
-            ->with('status', 'Access terminal: credentials verified. Welcome back, Unit ' . $request->unit_id . '.');
-    }
 }

@@ -80,4 +80,16 @@ class BunkerController extends Controller
             'quickLinks' => $this->quickLinks,
         ]);
     }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'unit_id'    => 'required|string|max:50',
+            'access_key' => 'required|string|min:6',
+        ]);
+
+        return redirect()
+            ->route('bunker.index')
+            ->with('status', 'Access terminal: credentials verified. Welcome back, Unit ' . $request->unit_id . '.');
+    }
 }

@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [BunkerController::class, 'index'])->name('bunker.index');
+Route::post('/login', [BunkerController::class, 'login'])->name('bunker.login');
 
 Route::group(['prefix' => 'operations'], function () {
     Route::get('/', [OperationController::class, 'index'])->name('operations.index');
-    Route::post('/login', [OperationController::class, 'login'])->name('operations.login');
     Route::get('/{key}', [OperationController::class, 'show'])->name('operations.show');
     Route::post('/{key}/deploy', [OperationController::class, 'deploy'])->name('operations.deploy');
 });
