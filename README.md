@@ -1,59 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# YoRHa Operations Hub
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> "Glory to mankind."
 
-## About Laravel
+A small personal Laravel project, a fictional NieR: Automata-themed
+dashboard for everyone's favorite android resistance group. Built mostly as
+an excuse to mess around with routing, controllers, Blade layouts, and shared
+partials, while pretending to be Pod 042 for an afternoon.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The hub is a mock terminal interface for YoRHa units, with several themed
+sections pulling from static in-memory data (no database, no Black Box
+required). The **Bunker** page is home base: where you check in, see
+who's still standing, and jump off to everything else.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Pages
 
-## Learning Laravel
+| Page | Route | Description |
+|---|---|---|
+| Bunker (Home) | `/` | Mission control. Facility status, crew roster, resource reserves, and quick links to every other section. |
+| Operations | `/operations` | Deployment protocol cards (Scanner, Battle, Execution, etc.) with an access terminal login form. |
+| Operation Details | `/operations/{key}` | Full breakdown of a single protocol, clearance status, and a big satisfying DEPLOY button. |
+| Missions | `/missions` | The mission log. Available, In Progress, Completed, or Locked, pick your poison. |
+| Mission Details | `/missions/{key}` | Mission briefing with an accept action. |
+| Inventory | `/inventory` | Items and plug-in chips. Hoard responsibly. |
+| Weapons | `/weapons` | The armory. Equip something with a dramatic name. |
+| Archives | `/archives` | Records database, including one entry marked "Classified" that you're definitely not supposed to read. |
+| Archive Details | `/archives/{key}` | Full record view with metadata. |
+| System | `/system` | Unit diagnostics, resource bars, and a system log that's mostly fine, probably. |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Tech Stack
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Laravel** (Blade templating, routing, controllers)
+- **Bootstrap** grid classes (`container-fluid`, `row`, `col-lg-*`) for layout
+- **Bootstrap Icons** (via CDN)
+- Custom CSS theme ("YoRHa" palette: tan/beige tones, sharp-edged panels,
+  uppercase letter-spaced nav.)
+- Vite for asset bundling (`resources/sass/app.scss`, `resources/js/app.js`)
 
-## Laravel Sponsors
+## Project Structure
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```
+app/Http/YoRHaControllers/
+├── OperationController.php
+├── BunkerController.php
+├── MissionController.php
+├── InventoryController.php
+├── WeaponController.php
+├── ArchiveController.php
+└── SystemController.php
 
-### Premium Partners
+resources/views/operations/
+├── nav.blade.php            # shared navigation partial
+├── styles.blade.php         # shared theme stylesheet
+├── bunker.blade.php         # home page
+├── operations.blade.php     # operations dashboard
+├── show.blade.php           # operation detail
+├── missions.blade.php       # mission list
+├── missions-show.blade.php  # mission detail
+├── inventory.blade.php      # inventory log
+├── weapons.blade.php        # weapons available
+├── archives.blade.php       # archives dashboard
+└── archives-show.blade.php  # archives details
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+routes/web.php
+```
 
-## Contributing
+All controllers live under the custom namespace `App\Http\YoRHaControllers`
+and extend the default `App\Http\Controllers\Controller`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Shared Partials
 
-## Code of Conduct
+Every page includes two shared Blade partials from `resources/views/operations/`:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **`operations.styles`** — the entire YoRHa theme in one stylesheet: colors,
+  panels, buttons, tables, progress bars, tags, responsive breakpoints. One
+  include, every page stays consistent.
+- **`operations.nav`** — the top nav bar. Active-tab highlighting is handled
+  server-side via `request()->routeIs('xxx.*')`, so wherever you are, the nav
+  always knows.
 
-## Security Vulnerabilities
+```php
+@include('operations.styles')
+...
+@include('operations.nav')
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Routing
 
-## License
+All hub routes live in `routes/web.php` under named route groups
+(`operations.*`, `missions.*`, `inventory.*`, `weapons.*`, `archives.*`,
+`system.*`, `bunker.index`). The home route (`/`) points to
+`BunkerController::index`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+There's also a catch-all fallback route that returns a custom "Page Not
+Found" image for anything that doesn't match, it's a bit off-theme, though... 
+
+## Running Locally
+
+```bash
+composer install
+npm install && npm run dev
+php artisan serve
+```
+
+Then visit `http://localhost:8000` and report for duty.
+
+## Notes
+
+- Assets referenced via `asset(...)` (`pngegg.png`, `YORHA_clear.svg`,
+  `Oops.png`) need to exist in `public/`, or the Bunker's going to look a
+  little empty.
+- This project is for personal practice/learning purposes! A fan-made,
+  non-commercial tribute, not affiliated with Square Enix, PlatinumGames, or
+  the NieR: Automata IP. For Glory. For Mankind. For fun.
+
+## Future inclusions
+
+- Databases
+- Server deployment for online viewing
+- More routes and pages! 

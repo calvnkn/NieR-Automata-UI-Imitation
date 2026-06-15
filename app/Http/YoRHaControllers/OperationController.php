@@ -106,7 +106,7 @@ class OperationController extends Controller
         ]);
 
         return redirect()
-            ->route('operations.operations')
+            ->route('operations.index')
             ->with('status', 'Access terminal: credentials verified. Welcome back, Unit ' . $request->unit_id . '.');
     }
 }
