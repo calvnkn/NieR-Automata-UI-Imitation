@@ -333,6 +333,17 @@
         margin: 0;
     }
 
+    .btn-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .btn-row form {
+        margin: 0;
+    }
+
     /* ---------- STATUS / MESSAGES ---------- */
     .status-message {
         padding: 15px 25px;
@@ -525,13 +536,11 @@
             font-size: 2rem;
         }
 
-        .login-actions {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
+        .login-actions,
+        .btn-row,
         .card-actions {
             flex-direction: column;
+            align-items: flex-start;
         }
 
         table {

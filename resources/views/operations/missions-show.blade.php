@@ -20,11 +20,12 @@
 <body>
 
     @include('operations.nav')
+
     <div class="container-fluid py-5 px-5">
 
         @if (session('status'))
             <div class="yorha-panel mb-4">
-                <div class="panel-body">
+                <div class="panel-body" style="padding:15px 25px;">
                     <span class="status-message">{{ session('status') }}</span>
                 </div>
             </div>
@@ -32,8 +33,8 @@
 
         @if (session('error'))
             <div class="yorha-panel mb-4">
-                <div class="panel-body">
-                    <span class="status-message is-error">{{ session('error') }}</span>
+                <div class="panel-body" style="padding:15px 25px;">
+                    <span class="status-message" style="color: var(--yorha-red);">{{ session('error') }}</span>
                 </div>
             </div>
         @endif
@@ -42,68 +43,53 @@
             <h1 class="title" style="font-size: 3.5rem; letter-spacing: 4px;">{{ $mission['name'] }}</h1>
         </div>
 
-        <div class="row g-4">
+        <div class="yorha-panel mb-4">
+            <div class="panel-header"> ■ MISSION BRIEFING </div>
+            <div class="panel-body">
 
-            <div class="col-lg-8 col-md-12">
+                <div style="margin-bottom: 20px;">
+                    @php
+                        $statusClass = match($mission['status']) {
+                            'Completed' => 'tag-good',
+                            'Available' => 'tag-good',
+                            'In Progress' => 'tag-warn',
+                            'Locked' => 'tag-bad',
+                            default => '',
+                        };
+                    @endphp
+                    <span class="tag {{ $statusClass }}">{{ $mission['status'] }}</span>
+                    <span class="tag">{{ $mission['type'] }}</span>
+                    <span class="tag">{{ $mission['difficulty'] }}</span>
+                </div>
 
-                <div class="yorha-panel">
-                    <div class="panel-header"> ■ MISSION BRIEFING </div>
-                    <div class="panel-body">
+                <p style="margin-bottom: 20px;">{{ $mission['description'] }}</p>
 
-                        <div style="margin-bottom: 20px;">
-                            @php
-                                $statusClass = match($mission['status']) {
-                                    'Completed'   => 'tag-good',
-                                    'Available'   => 'tag-good',
-                                    'In Progress' => 'tag-warn',
-                                    'Locked'      => 'tag-bad',
-                                    default       => '',
-                                };
-                            @endphp
-                            <span class="tag {{ $statusClass }}">{{ $mission['status'] }}</span>
-                            <span class="tag">{{ $mission['type'] }}</span>
-                            <span class="tag">{{ $mission['difficulty'] }}</span>
-                        </div>
-
-                        <p style="margin-bottom: 30px;">{{ $mission['description'] }}</p>
-
-                        <div class="btn-row">
-                            @if ($mission['status'] !== 'Completed')
-                                <form method="POST" action="{{ route('missions.accept', $key) }}">
-                                    @csrf
-                                    <button type="submit" class="yorha-btn"> ACCEPT MISSION </button>
-                                </form>
-                            @else
-                                <span class="yorha-btn" style="opacity:.6; cursor:default;"> MISSION COMPLETE </span>
-                            @endif
-                            <a href="{{ route('missions.index') }}" class="yorha-btn-link"> &larr; BACK TO LOG </a>
-                        </div>
-
+                <div class="status-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="status-box">
+                        <div class="label">Location</div>
+                        <div class="value">{{ $mission['location'] }}</div>
+                    </div>
+                    <div class="status-box">
+                        <div class="label">Reward</div>
+                        <div class="value">{{ $mission['reward'] }}</div>
                     </div>
                 </div>
 
-            </div>
+                <div class="btn-row">
+                    @if ($mission['status'] !== 'Completed')
+                        <form method="POST" action="{{ route('missions.accept', $key) }}">
+                            @csrf
+                            <button type="submit" class="yorha-btn"> ACCEPT MISSION </button>
+                        </form>
+                    @else
+                        <span class="yorha-btn" style="opacity:.6; cursor:default;"> MISSION COMPLETE </span>
+                    @endif
 
-            <div class="col-lg-4 col-md-12">
-
-                <div class="yorha-panel">
-                    <div class="panel-header"> ■ OBJECTIVE DATA </div>
-                    <div class="panel-body">
-                        <div class="status-grid" style="grid-template-columns: 1fr;">
-                            <div class="status-box">
-                                <div class="label">Location</div>
-                                <div class="value" style="font-size: 1.1rem;">{{ $mission['location'] }}</div>
-                            </div>
-                            <div class="status-box">
-                                <div class="label">Reward</div>
-                                <div class="value" style="font-size: 1.1rem;">{{ $mission['reward'] }}</div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="{{ route('missions.index') }}" class="yorha-btn-link">
+                        &larr; BACK TO LOG
+                    </a>
                 </div>
-
             </div>
-
         </div>
 
     </div>
