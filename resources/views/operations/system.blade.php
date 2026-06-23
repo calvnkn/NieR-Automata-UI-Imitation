@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System - YoRHa</title>
+    <title>System - NieR: Automata Operations</title>
 
     @vite([
     'resources/sass/app.scss',
@@ -100,7 +100,7 @@
             </div>
 
             <div class="col-lg-6 col-md-12">
-                <div class="yorha-panel">
+                <div class="yorha-panel mb-4">
                     <div class="panel-header"> ■ SYSTEM LOG </div>
                     <div class="panel-body">
                         <table>
@@ -117,6 +117,20 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="yorha-panel">
+                    <div class="panel-header"> ■ SESSION </div>
+                    <div class="panel-body">
+                        <p style="margin-bottom: 20px; opacity: .7; letter-spacing: 1px;">
+                            Unit {{ session('yorha_unit_id', 'Unknown') }} is currently authenticated.
+                            Terminate session to return to title screen.
+                        </p>
+                        <form method="POST" action="{{ route('auth.logout') }}">
+                            @csrf
+                            <button type="submit" class="yorha-btn"><span> TERMINATE SESSION </span></button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -124,6 +138,7 @@
     </div>
 
     @include('operations.footer')
+
 </body>
 
 </html>

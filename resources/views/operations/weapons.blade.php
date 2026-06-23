@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weapons - YoRHa</title>
+    <title>Weapons - NieR: Automata Operations</title>
 
     @vite([
     'resources/sass/app.scss',
@@ -58,7 +58,11 @@
 
                             <div class="card-actions">
                                 @if ($weapon['equipped'])
-                                    <span class="tag tag-good" style="padding: 12px 30px;">EQUIPPED</span>
+                                    <span class="tag tag-good" style="padding: 8px 16px; margin-right: 10px;">EQUIPPED</span>
+                                    <form action="{{ route('weapons.unequip', $key) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="yorha-btn"><span> UNEQUIP </span></button>
+                                    </form>
                                 @else
                                     <form action="{{ route('weapons.equip', $key) }}" method="POST">
                                         @csrf
@@ -75,6 +79,7 @@
     </div>
 
     @include('operations.footer')
+
 </body>
 
 </html>

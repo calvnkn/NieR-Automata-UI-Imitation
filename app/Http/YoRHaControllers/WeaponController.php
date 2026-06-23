@@ -77,4 +77,17 @@ class WeaponController extends Controller
             ->route('weapons.index')
             ->with('status', "{$weapon['name']} has been equipped.");
     }
+
+    public function unequip(Request $request, string $key)
+    {
+        $weapon = $this->weapons[$key] ?? null;
+
+        if (!$weapon) {
+            abort(404, 'Weapon record not found.');
+        }
+
+        return redirect()
+            ->route('weapons.index')
+            ->with('status', "{$weapon['name']} has been unequipped.");
+    }
 }

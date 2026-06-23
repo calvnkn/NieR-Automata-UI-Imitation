@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\YoRHaControllers\AuthController;
 use App\Http\YoRHaControllers\OperationController;
 use App\Http\YoRHaControllers\BunkerController;
 use App\Http\YoRHaControllers\MissionController;
@@ -9,9 +10,21 @@ use App\Http\YoRHaControllers\ArchiveController;
 use App\Http\YoRHaControllers\SystemController;
 use Illuminate\Support\Facades\Route;
 
+// Landing and auth routes
 
-Route::get('/', [BunkerController::class, 'index'])->name('bunker.index');
-Route::post('/login', [BunkerController::class, 'login'])->name('bunker.login');
+Route::get('/', [AuthController::class, 'landing'])->name('landing');
+
+Route::get('/login', [AuthController::class, 'loginForm'])->name('auth.login');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login.submit');
+
+Route::get('/register', [AuthController::class, 'registerForm'])->name('auth.register');
+Route::post('/register', [AuthController::class, 'register'])->name('auth.register.submit');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+// Hub routes
+
+Route::get('/bunker', [BunkerController::class, 'index'])->name('bunker.index');
 
 Route::group(['prefix' => 'operations'], function () {
     Route::get('/', [OperationController::class, 'index'])->name('operations.index');
@@ -32,6 +45,7 @@ Route::group(['prefix' => 'inventory'], function () {
 Route::group(['prefix' => 'weapons'], function () {
     Route::get('/', [WeaponController::class, 'index'])->name('weapons.index');
     Route::post('/{key}/equip', [WeaponController::class, 'equip'])->name('weapons.equip');
+    Route::post('/{key}/unequip', [WeaponController::class, 'unequip'])->name('weapons.unequip');
 });
 
 Route::group(['prefix' => 'archives'], function () {
@@ -44,6 +58,6 @@ Route::group(['prefix' => 'system'], function () {
     Route::post('/restart', [SystemController::class, 'restart'])->name('system.restart');
 });
 
-Route::fallback(function(){
+Route::fallback(function () {
     return "<img src='" . asset('Oops.png') . "' alt='Page Not Found' height='1080' width='1920'>";
 });

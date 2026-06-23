@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bunker - YoRHa</title>
+    <title>Bunker - NieR: Automata Operations</title>
 
     @vite([
     'resources/sass/app.scss',
@@ -24,49 +24,7 @@
 
         <div class="row g-4 align-items-start">
 
-            <div class="col-lg-3 col-md-12 access-column">
-
-                <div class="yorha-panel">
-                    <div class="panel-header"> ■ ACCESS TERMINAL </div>
-
-                    <div class="login-body">
-
-                        @if (session('status'))
-                        <p class="status-message">{{ session('status') }}</p>
-                        @endif
-
-                        @if ($errors->any())
-                        <ul class="error-list">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                        @endif
-
-                        <form method="POST" action="{{ route('bunker.login') }}">
-                            @csrf
-
-                            <div class="form-group">
-                                <label> YoRHa Unit ID </label>
-                                <input type="text" name="unit_id" class="form-control" value="{{ old('unit_id') }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label> Access Key </label>
-                                <input type="password" name="access_key" class="form-control">
-                            </div>
-
-                            <div class="login-actions">
-                                <button type="submit" class="yorha-btn"><span> LOGIN </span></button>
-                                <a href="#" class="forgot-link"> Recover Access Key </a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-lg-9 col-md-12">
+            <div class="col-12">
 
                 <div class="title-row">
                     <h1 class="title"> BUNKER </h1>
@@ -192,6 +150,7 @@
     </div>
 
     @include('operations.footer')
+
 </body>
 
 </html>
