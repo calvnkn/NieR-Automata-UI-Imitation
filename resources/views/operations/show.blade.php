@@ -97,6 +97,7 @@
 
     </div>
 
+    @include('operations.footer')
 </body>
 
 </html>
