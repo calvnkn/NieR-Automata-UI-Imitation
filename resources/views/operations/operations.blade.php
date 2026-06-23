@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YoRHa - Operations</title>
+    <title>Operations - YoRHa</title>
 
     @vite([
     'resources/sass/app.scss',
@@ -46,10 +46,10 @@
                             @endforeach
                         </ul>
                         <div class="card-actions">
-                            <a href="{{ route('operations.show', $key) }}" class="yorha-btn-link"> DETAILS </a>
+                            <a href="{{ route('operations.show', $key) }}" class="yorha-btn-link"><span> DETAILS </span></a>
                             <form action="{{ route('operations.deploy', $key) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="yorha-btn"> DEPLOY </button>
+                                <button type="submit" class="yorha-btn"><span> DEPLOY </span></button>
                             </form>
                         </div>
                     </div>

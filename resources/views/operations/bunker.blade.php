@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YoRHa - The Bunker</title>
+    <title>Bunker - YoRHa</title>
 
     @vite([
     'resources/sass/app.scss',
@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="login-actions">
-                                <button type="submit" class="yorha-btn"> LOGIN </button>
+                                <button type="submit" class="yorha-btn"><span> LOGIN </span></button>
                                 <a href="#" class="forgot-link"> Recover Access Key </a>
                             </div>
                         </form>
@@ -70,7 +70,7 @@
 
                 <div class="title-row">
                     <h1 class="title"> BUNKER </h1>
-                    <span class="title-side">-YoRHa Headquarters</span>
+                    <span class="title-side">-Resistance Headquarters</span>
                 </div>
 
                 <p class="description">
@@ -87,7 +87,7 @@
                                 <div class="card-body">
                                     <p style="margin-bottom: 24px;">{{ $link['description'] }}</p>
                                     <div class="card-actions">
-                                        <a href="{{ route($link['route']) }}" class="yorha-btn-link"> OPEN </a>
+                                        <a href="{{ route($link['route']) }}" class="yorha-btn-link"><span> OPEN </span></a>
                                     </div>
                                 </div>
                             </div>

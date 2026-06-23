@@ -20,6 +20,7 @@
 <body>
 
     @include('operations.nav')
+
     <div class="container-fluid py-5 px-5">
 
         <div class="title-row">
@@ -35,35 +36,37 @@
 
         <div class="yorha-panel">
             <div class="panel-header"> ■ RECORDS </div>
-            <table>
-                <tr>
-                    <th style="padding: 18px;"> Title </th>
-                    <th style="padding: 18px;"> Category </th>
-                    <th style="padding: 18px;"> Date Logged </th>
-                    <th style="padding: 18px;">&nbsp;</th>
-                </tr>
-                @foreach ($entries as $key => $entry)
+            <div class="panel-body">
+                <table>
                     <tr>
-                        <td style="padding: 18px;">
-                            {{ $entry['title'] }}
-                            <div style="font-size:.85rem; opacity:.75; margin-top:4px;">
-                                {{ $entry['summary'] }}
-                            </div>
-                        </td>
-                        <td style="padding: 18px;">
-                            @if ($entry['category'] === 'Classified')
-                                <span class="tag tag-bad">{{ $entry['category'] }}</span>
-                            @else
-                                <span class="tag">{{ $entry['category'] }}</span>
-                            @endif
-                        </td>
-                        <td style="padding: 18px;">{{ $entry['date'] }}</td>
-                        <td style="padding: 18px;">
-                            <a href="{{ route('archives.show', $key) }}" class="yorha-btn-link"> VIEW </a>
-                        </td>
+                        <th> Title </th>
+                        <th> Category </th>
+                        <th> Date Logged </th>
+                        <th> &nbsp; </th>
                     </tr>
-                @endforeach
-            </table>
+                    @foreach ($entries as $key => $entry)
+                        <tr>
+                            <td>
+                                {{ $entry['title'] }}
+                                <div style="font-size:.85rem; opacity:.75; margin-top:4px;">
+                                    {{ $entry['summary'] }}
+                                </div>
+                            </td>
+                            <td>
+                                @if ($entry['category'] === 'Classified')
+                                    <span class="tag tag-bad">{{ $entry['category'] }}</span>
+                                @else
+                                    <span class="tag">{{ $entry['category'] }}</span>
+                                @endif
+                            </td>
+                            <td>{{ $entry['date'] }}</td>
+                            <td>
+                                <a href="{{ route('archives.show', $key) }}" class="yorha-btn-link"><span>VIEW</span></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
         </div>
 
     </div>

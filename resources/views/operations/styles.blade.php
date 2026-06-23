@@ -1,4 +1,3 @@
-<link rel="icon" type="image/svg+xml" href="{{ asset('YORHA_clear.svg') }}">
 <style>
     :root {
         --yorha-bg: #d7d1b8;
@@ -24,6 +23,8 @@
         font-family: Arial, Helvetica, sans-serif;
         min-height: 100vh;
         overflow-x: hidden;
+        box-shadow: inset 0 0 150px rgba(70, 65, 55, .4),
+                    inset 0 0 150px rgba(70, 65, 55, .3);
     }
 
     body::before {
@@ -51,7 +52,6 @@
         justify-content: space-between;
         align-items: center;
         padding: 18px 40px;
-        border-bottom: 4px solid var(--yorha-dark);
     }
 
     .brand {
@@ -195,37 +195,81 @@
 
     /* ---------- BUTTONS ---------- */
     .yorha-btn {
-        background: var(--yorha-dark);
-        color: var(--yorha-light);
-        border: none;
-        padding: 12px 30px;
+        background: transparent;
+        color: var(--yorha-dark);
+        border: 1px solid transparent;
+        border-left: none;
+        border-right: none;
+        padding: .4rem 1rem;
         cursor: pointer;
-        transition: .2s;
-        font-weight: bold;
         letter-spacing: 1px;
+        position: relative;
+        transition: color .2s, border-color .2s;
+        display: inline-block;
+        box-sizing: content-box;
+        overflow: hidden;
+    }
+
+    .yorha-btn::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 3px; bottom: 3px;
+        width: 100%;
+        background-color: #9d9785;
+        transition: background-color .2s;
+        z-index: 0;
     }
 
     .yorha-btn:hover {
-        transform: translate(-3px, -3px);
-        box-shadow: 5px 5px 0 rgba(0, 0, 0, .2);
+        color: var(--yorha-light);
+        border-color: var(--yorha-dark);
+    }
+
+    .yorha-btn:hover::before {
+        background-color: var(--yorha-dark);
     }
 
     .yorha-btn-link {
-        background: var(--yorha-dark);
-        color: var(--yorha-light);
-        border: none;
-        padding: 12px 30px;
+        background: transparent;
+        color: var(--yorha-dark);
+        border: 1px solid transparent;
+        border-left: none;
+        border-right: none;
+        padding: .4rem 1rem;
         cursor: pointer;
-        transition: .2s;
-        font-weight: bold;
         letter-spacing: 1px;
         text-decoration: none;
         display: inline-block;
+        position: relative;
+        transition: color .2s, border-color .2s;
+        box-sizing: content-box;
+        overflow: hidden;
+    }
+
+    .yorha-btn-link::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 3px; bottom: 3px;
+        width: 100%;
+        background-color: #9d9785;
+        transition: background-color .2s;
+        z-index: 0;
     }
 
     .yorha-btn-link:hover {
-        transform: translate(-3px, -3px);
-        box-shadow: 5px 5px 0 rgba(0, 0, 0, .2);
+        color: var(--yorha-light);
+        border-color: var(--yorha-dark);
+    }
+
+    .yorha-btn-link:hover::before {
+        background-color: var(--yorha-dark);
+    }
+
+    /* span sits above ::before */
+    .yorha-btn > span,
+    .yorha-btn-link > span {
+        position: relative;
+        z-index: 1;
     }
 
     .yorha-btn-outline {
@@ -235,7 +279,6 @@
         padding: 9px 27px;
         cursor: pointer;
         transition: .2s;
-        font-weight: bold;
         letter-spacing: 1px;
         text-decoration: none;
         display: inline-block;
@@ -467,6 +510,86 @@
     .tag-warn {
         border-color: var(--yorha-amber);
         color: var(--yorha-amber);
+    }
+
+    /* ---------- PATTERN DIVIDER ---------- */
+    .pattern {
+        border-top: 2px solid var(--yorha-dark);
+    }
+
+    .pattern-inner {
+        height: 40px;
+        background-size: 50px 3px,
+            50px 1px, 50px 1px, 50px 1px, 50px 1px,
+            50px 1px, 50px 1px, 50px 1px, 50px 1px;
+        background-position: 0 0,
+            22px 4px, 22px 5px, 22px 6px, 22px 7px,
+            28px 12px, 28px 13px, 28px 14px, 28px 15px;
+        background-image:
+            linear-gradient(90deg, var(--yorha-dark), var(--yorha-dark) 10px, transparent 10px),
+            linear-gradient(90deg,
+                rgba(70,65,55,.4), rgba(70,65,55,.4) 1px,
+                rgba(70,65,55,.8) 1px, rgba(70,65,55,.8) 2px,
+                rgba(70,65,55,.9) 2px, rgba(70,65,55,.9) 3px,
+                rgba(70,65,55,.4) 3px, rgba(70,65,55,.4) 4px,
+                transparent 4px, transparent 12px,
+                rgba(70,65,55,.4) 12px, rgba(70,65,55,.4) 13px,
+                rgba(70,65,55,.8) 13px, rgba(70,65,55,.8) 14px,
+                rgba(70,65,55,.9) 14px, rgba(70,65,55,.9) 15px,
+                rgba(70,65,55,.4) 15px, rgba(70,65,55,.4) 16px,
+                transparent 16px),
+            linear-gradient(90deg,
+                rgba(70,65,55,.9), rgba(70,65,55,.9) 1px,
+                rgba(70,65,55,1) 1px, rgba(70,65,55,1) 3px,
+                rgba(70,65,55,.9) 3px, rgba(70,65,55,.9) 4px,
+                transparent 4px, transparent 12px,
+                rgba(70,65,55,.9) 12px, rgba(70,65,55,.9) 13px,
+                rgba(70,65,55,1) 13px, rgba(70,65,55,1) 15px,
+                rgba(70,65,55,.9) 15px, rgba(70,65,55,.9) 16px,
+                transparent 16px),
+            linear-gradient(90deg,
+                rgba(70,65,55,.9), rgba(70,65,55,.9) 1px,
+                rgba(70,65,55,1) 1px, rgba(70,65,55,1) 3px,
+                rgba(70,65,55,.9) 3px, rgba(70,65,55,.9) 4px,
+                transparent 4px, transparent 12px,
+                rgba(70,65,55,.9) 12px, rgba(70,65,55,.9) 13px,
+                rgba(70,65,55,1) 13px, rgba(70,65,55,1) 15px,
+                rgba(70,65,55,.9) 15px, rgba(70,65,55,.9) 16px,
+                transparent 16px),
+            linear-gradient(90deg,
+                rgba(70,65,55,.4), rgba(70,65,55,.4) 1px,
+                rgba(70,65,55,.8) 1px, rgba(70,65,55,.8) 2px,
+                rgba(70,65,55,.9) 2px, rgba(70,65,55,.9) 3px,
+                rgba(70,65,55,.4) 3px, rgba(70,65,55,.4) 4px,
+                transparent 4px, transparent 12px,
+                rgba(70,65,55,.4) 12px, rgba(70,65,55,.4) 13px,
+                rgba(70,65,55,.8) 13px, rgba(70,65,55,.8) 14px,
+                rgba(70,65,55,.9) 14px, rgba(70,65,55,.9) 15px,
+                rgba(70,65,55,.4) 15px, rgba(70,65,55,.4) 16px,
+                transparent 16px),
+            linear-gradient(90deg,
+                rgba(70,65,55,.4), rgba(70,65,55,.4) 1px,
+                rgba(70,65,55,.8) 1px, rgba(70,65,55,.8) 2px,
+                rgba(70,65,55,.9) 2px, rgba(70,65,55,.9) 3px,
+                rgba(70,65,55,.4) 3px, rgba(70,65,55,.4) 4px,
+                transparent 4px),
+            linear-gradient(90deg,
+                rgba(70,65,55,.9), rgba(70,65,55,.9) 1px,
+                rgba(70,65,55,1) 1px, rgba(70,65,55,1) 3px,
+                rgba(70,65,55,.9) 3px, rgba(70,65,55,.9) 4px,
+                transparent 4px),
+            linear-gradient(90deg,
+                rgba(70,65,55,.9), rgba(70,65,55,.9) 1px,
+                rgba(70,65,55,1) 1px, rgba(70,65,55,1) 3px,
+                rgba(70,65,55,.9) 3px, rgba(70,65,55,.9) 4px,
+                transparent 4px),
+            linear-gradient(90deg,
+                rgba(70,65,55,.4), rgba(70,65,55,.4) 1px,
+                rgba(70,65,55,.8) 1px, rgba(70,65,55,.8) 2px,
+                rgba(70,65,55,.9) 2px, rgba(70,65,55,.9) 3px,
+                rgba(70,65,55,.4) 3px, rgba(70,65,55,.4) 4px,
+                transparent 4px);
+        background-repeat: repeat-x;
     }
 
     /* ---------- RESPONSIVE ---------- */

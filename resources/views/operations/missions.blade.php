@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YoRHa - Missions</title>
+    <title>Missions - YoRHa</title>
 
     @vite([
     'resources/sass/app.scss',
@@ -20,6 +20,7 @@
 <body>
 
     @include('operations.nav')
+
     <div class="container-fluid py-5 px-5">
 
         <div class="title-row">
@@ -38,15 +39,14 @@
                     <div class="operation-card">
                         <div class="card-header"> {{ $mission['name'] }} </div>
                         <div class="card-body">
-
-                            <div style="margin-bottom: 18px;">
+                            <div style="margin-bottom: 15px;">
                                 @php
                                     $statusClass = match($mission['status']) {
-                                        'Completed'   => 'tag-good',
-                                        'Available'   => 'tag-good',
+                                        'Completed' => 'tag-good',
+                                        'Available' => 'tag-good',
                                         'In Progress' => 'tag-warn',
-                                        'Locked'      => 'tag-bad',
-                                        default       => '',
+                                        'Locked' => 'tag-bad',
+                                        default => '',
                                     };
                                 @endphp
                                 <span class="tag {{ $statusClass }}">{{ $mission['status'] }}</span>
@@ -60,9 +60,8 @@
                             </ul>
 
                             <div class="card-actions">
-                                <a href="{{ route('missions.show', $key) }}" class="yorha-btn-link"> DETAILS </a>
+                                <a href="{{ route('missions.show', $key) }}" class="yorha-btn-link"><span> DETAILS </span></a>
                             </div>
-
                         </div>
                     </div>
                 </div>

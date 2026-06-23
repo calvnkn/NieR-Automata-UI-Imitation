@@ -43,53 +43,66 @@
             <h1 class="title" style="font-size: 3.5rem; letter-spacing: 4px;">{{ $mission['name'] }}</h1>
         </div>
 
-        <div class="yorha-panel mb-4">
-            <div class="panel-header"> ■ MISSION BRIEFING </div>
-            <div class="panel-body">
+        <div class="row g-4">
 
-                <div style="margin-bottom: 20px;">
-                    @php
-                        $statusClass = match($mission['status']) {
-                            'Completed' => 'tag-good',
-                            'Available' => 'tag-good',
-                            'In Progress' => 'tag-warn',
-                            'Locked' => 'tag-bad',
-                            default => '',
-                        };
-                    @endphp
-                    <span class="tag {{ $statusClass }}">{{ $mission['status'] }}</span>
-                    <span class="tag">{{ $mission['type'] }}</span>
-                    <span class="tag">{{ $mission['difficulty'] }}</span>
-                </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="yorha-panel">
+                    <div class="panel-header"> ■ MISSION BRIEFING </div>
+                    <div class="panel-body">
 
-                <p style="margin-bottom: 20px;">{{ $mission['description'] }}</p>
+                        <div style="margin-bottom: 20px;">
+                            @php
+                                $statusClass = match($mission['status']) {
+                                    'Completed'   => 'tag-good',
+                                    'Available'   => 'tag-good',
+                                    'In Progress' => 'tag-warn',
+                                    'Locked'      => 'tag-bad',
+                                    default       => '',
+                                };
+                            @endphp
+                            <span class="tag {{ $statusClass }}">{{ $mission['status'] }}</span>
+                            <span class="tag">{{ $mission['type'] }}</span>
+                            <span class="tag">{{ $mission['difficulty'] }}</span>
+                        </div>
 
-                <div class="status-grid" style="grid-template-columns: repeat(2, 1fr);">
-                    <div class="status-box">
-                        <div class="label">Location</div>
-                        <div class="value">{{ $mission['location'] }}</div>
+                        <p style="margin-bottom: 30px;">{{ $mission['description'] }}</p>
+
+                        <div class="btn-row">
+                            @if ($mission['status'] !== 'Completed')
+                                <form method="POST" action="{{ route('missions.accept', $key) }}">
+                                    @csrf
+                                    <button type="submit" class="yorha-btn"><span> ACCEPT MISSION </span></button>
+                                </form>
+                            @else
+                                <span class="yorha-btn" style="opacity:.6; cursor:default;"><span> MISSION COMPLETE </span></span>
+                            @endif
+                            <a href="{{ route('missions.index') }}" class="yorha-btn-link">
+                                <span>&larr; BACK TO LOG</span>
+                            </a>
+                        </div>
+
                     </div>
-                    <div class="status-box">
-                        <div class="label">Reward</div>
-                        <div class="value">{{ $mission['reward'] }}</div>
-                    </div>
-                </div>
-
-                <div class="btn-row">
-                    @if ($mission['status'] !== 'Completed')
-                        <form method="POST" action="{{ route('missions.accept', $key) }}">
-                            @csrf
-                            <button type="submit" class="yorha-btn"> ACCEPT MISSION </button>
-                        </form>
-                    @else
-                        <span class="yorha-btn" style="opacity:.6; cursor:default;"> MISSION COMPLETE </span>
-                    @endif
-
-                    <a href="{{ route('missions.index') }}" class="yorha-btn-link">
-                        &larr; BACK TO LOG
-                    </a>
                 </div>
             </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="yorha-panel">
+                    <div class="panel-header"> ■ OBJECTIVE DATA </div>
+                    <div class="panel-body">
+                        <div class="status-grid" style="grid-template-columns: 1fr;">
+                            <div class="status-box">
+                                <div class="label">Location</div>
+                                <div class="value" style="font-size: 1.1rem;">{{ $mission['location'] }}</div>
+                            </div>
+                            <div class="status-box">
+                                <div class="label">Reward</div>
+                                <div class="value" style="font-size: 1.1rem;">{{ $mission['reward'] }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>

@@ -13,3 +13,7 @@
         <a href="{{ route('system.index') }}" class="{{ request()->routeIs('system.*') ? 'active' : '' }}"> SYSTEM </a>
     </div>
 </nav>
+
+<div class="pattern">
+    <div class="pattern-inner"></div>
+</div>

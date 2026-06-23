@@ -20,6 +20,7 @@
 <body>
 
     @include('operations.nav')
+
     <div class="container-fluid py-5 px-5">
 
         <div class="title-row">
@@ -29,8 +30,7 @@
         <div class="row g-4">
 
             <div class="col-lg-8 col-md-12">
-
-                <div class="yorha-panel">
+                <div class="yorha-panel mb-4">
                     <div class="panel-header"> ■ RECORD DETAILS </div>
                     <div class="panel-body">
 
@@ -43,22 +43,16 @@
 
                         <p style="margin-bottom: 30px;">{{ $entry['summary'] }}</p>
 
-                        <div class="btn-row">
-                            <a href="{{ route('archives.index') }}" class="yorha-btn-link"> &larr; BACK TO RECORDS </a>
-                        </div>
-
+                        <a href="{{ route('archives.index') }}" class="yorha-btn-link"><span>&larr; BACK TO RECORDS</span></a>
                     </div>
                 </div>
-
             </div>
 
             <div class="col-lg-4 col-md-12">
-
                 <div class="yorha-panel">
                     <div class="panel-header"> ■ RECORD METADATA </div>
                     <div class="panel-body">
                         <div class="status-grid" style="grid-template-columns: 1fr;">
-
                             <div class="status-box">
                                 <div class="label">Category</div>
                                 <div class="value" style="font-size: 1rem; margin-top: 8px;">
@@ -69,16 +63,13 @@
                                     @endif
                                 </div>
                             </div>
-
                             <div class="status-box">
                                 <div class="label">Date Logged</div>
                                 <div class="value" style="font-size: 1rem;">{{ $entry['date'] }}</div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>

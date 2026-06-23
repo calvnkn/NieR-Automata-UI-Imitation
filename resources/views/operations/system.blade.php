@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YoRHa - System</title>
+    <title>System - YoRHa</title>
 
     @vite([
     'resources/sass/app.scss',
@@ -20,6 +20,7 @@
 <body>
 
     @include('operations.nav')
+
     <div class="container-fluid py-5 px-5">
 
         @if (session('status'))
@@ -92,7 +93,7 @@
 
                         <form method="POST" action="{{ route('system.restart') }}">
                             @csrf
-                            <button type="submit" class="yorha-btn"> RESTART UNIT </button>
+                            <button type="submit" class="yorha-btn"><span> RESTART UNIT </span></button>
                         </form>
                     </div>
                 </div>
