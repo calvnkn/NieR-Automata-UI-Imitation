@@ -18,6 +18,8 @@
 
 <body>
 
+    @include('operations.nav-auth')
+
     <div class="container-fluid py-5 px-5">
 
         <div class="row justify-content-center" style="min-height: 100vh; align-items: center;">
@@ -25,7 +27,7 @@
             <div class="col-lg-5 col-md-7 col-sm-10">
 
                 <div style="text-align: center; margin-bottom: 40px;">
-                    <img src="{{ asset('pngegg.png') }}" alt="YoRHa" style="height: 60px; margin-bottom: 20px;">
+                    <img src="{{ asset('pngegg.png') }}" alt="YoRHa" style="height: 60px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
                     <div class="title" style="font-size: 2.5rem; letter-spacing: 6px;">UNIT REGISTRATION</div>
                     <div style="letter-spacing: 3px; opacity: .6; margin-top: 8px; font-size: .85rem;">New YoRHa Unit Initialization</div>
                 </div>
