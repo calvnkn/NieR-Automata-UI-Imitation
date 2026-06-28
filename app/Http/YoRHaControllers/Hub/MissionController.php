@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\YoRHaControllers;
+namespace App\Http\YoRHaControllers\Hub;
 
-use App\Http\Controllers\Controller;
+use App\Http\YoRHaControllers\Controller;
 use Illuminate\Http\Request;
 
 class MissionController extends Controller
@@ -66,7 +66,7 @@ class MissionController extends Controller
 
     public function index()
     {
-        return view('operations.missions', [
+        return view('missions.missions', [
             'missions' => $this->missions,
         ]);
     }
@@ -79,7 +79,7 @@ class MissionController extends Controller
             abort(404, 'Mission record not found.');
         }
 
-        return view('operations.missions-show', [
+        return view('missions.missions-show', [
             'key' => $key,
             'mission' => $mission,
         ]);

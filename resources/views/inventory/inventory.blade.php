@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YoRHa - Inventory</title>
+    <title>Inventory - YoRHa</title>
 
     @vite([
     'resources/sass/app.scss',
@@ -14,13 +14,14 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    @include('operations.styles')
+    @include('partials.styles')
 </head>
 
 <body>
 
-    @include('operations.nav')
-    <div class="container-fluid py-5 px-5">
+    @include('partials.nav')
+
+    <div class="container-fluid py-4 px-3 px-md-4 px-lg-5">
 
         <div class="title-row">
             <h1 class="title"> INVENTORY </h1>
@@ -32,12 +33,12 @@
             slots are limited by unit OS capacity.
         </p>
 
-        <div class="row g-4">
+        <div class="row g-3 g-md-4">
 
-            <div class="col-lg-6 col-md-12">
+            <div class="col-12 col-lg-6">
                 <div class="yorha-panel">
                     <div class="panel-header"> ■ ITEMS </div>
-                    <div class="panel-body">
+                    <div class="table-responsive">
                         <table>
                             <tr>
                                 <th> Item </th>
@@ -59,10 +60,10 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-12">
+            <div class="col-12 col-lg-6">
                 <div class="yorha-panel">
                     <div class="panel-header"> ■ PLUG-IN CHIPS </div>
-                    <div class="panel-body">
+                    <div class="table-responsive">
                         <table>
                             <tr>
                                 <th> Chip </th>
@@ -96,7 +97,8 @@
 
     </div>
 
-    @include('operations.footer')
+    @include('partials.footer')
+
 </body>
 
 </html>

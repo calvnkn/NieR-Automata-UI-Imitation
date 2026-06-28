@@ -14,14 +14,14 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    @include('operations.styles')
+    @include('partials.styles')
 </head>
 
 <body>
 
-    @include('operations.nav')
+    @include('partials.nav')
 
-    <div class="container-fluid py-5 px-5">
+    <div class="container-fluid py-4 px-3 px-md-4 px-lg-5">
 
         @if (session('status'))
             <div class="yorha-panel mb-4">
@@ -41,12 +41,12 @@
             resource usage, and recent activity logs.
         </p>
 
-        <div class="row g-4 mb-5">
+        <div class="row g-3 g-md-4 mb-4 mb-md-5">
 
-            <div class="col-lg-6 col-md-12">
-                <div class="yorha-panel mb-4">
+            <div class="col-12 col-lg-6">
+                <div class="yorha-panel mb-3 mb-md-4">
                     <div class="panel-header"> ■ DIAGNOSTICS </div>
-                    <div class="panel-body">
+                    <div class="table-responsive">
                         <table>
                             <tr>
                                 <th> Component </th>
@@ -99,10 +99,10 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-12">
-                <div class="yorha-panel mb-4">
+            <div class="col-12 col-lg-6">
+                <div class="yorha-panel mb-3 mb-md-4">
                     <div class="panel-header"> ■ SYSTEM LOG </div>
-                    <div class="panel-body">
+                    <div class="table-responsive">
                         <table>
                             <tr>
                                 <th> Time </th>
@@ -137,7 +137,7 @@
 
     </div>
 
-    @include('operations.footer')
+    @include('partials.footer')
 
 </body>
 

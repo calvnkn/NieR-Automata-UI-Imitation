@@ -14,22 +14,22 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    @include('operations.styles')
+    @include('partials.styles')
 </head>
 
 <body>
 
-    @include('operations.nav')
+    @include('partials.nav')
 
-    <div class="container-fluid py-5 px-5">
+    <div class="container-fluid py-4 px-3 px-md-4 px-lg-5">
 
         <div class="title-row">
             <h1 class="title" style="font-size: 3.5rem; letter-spacing: 4px;">{{ $entry['title'] }}</h1>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-3 g-md-4">
 
-            <div class="col-lg-8 col-md-12">
+            <div class="col-12 col-lg-8">
                 <div class="yorha-panel mb-4">
                     <div class="panel-header"> ■ RECORD DETAILS </div>
                     <div class="panel-body">
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-12">
+            <div class="col-12 col-lg-4">
                 <div class="yorha-panel">
                     <div class="panel-header"> ■ RECORD METADATA </div>
                     <div class="panel-body">
@@ -76,7 +76,8 @@
 
     </div>
 
-    @include('operations.footer')
+    @include('partials.footer')
+
 </body>
 
 </html>

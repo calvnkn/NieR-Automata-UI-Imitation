@@ -52,6 +52,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 18px 40px;
+        position: relative;
     }
 
     .brand {
@@ -64,6 +65,40 @@
         width: auto;
         display: block;
         object-fit: contain;
+    }
+
+    /* hamburger button — hidden on desktop */
+    .nav-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+        z-index: 10;
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 26px;
+        height: 2px;
+        background: var(--yorha-dark);
+        transition: .3s;
+        transform-origin: center;
+    }
+
+    /* X shape when open */
+    .nav-toggle-open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle-open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle-open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
     }
 
     .nav-links {
@@ -279,6 +314,7 @@
         padding: 9px 27px;
         cursor: pointer;
         transition: .2s;
+        font-weight: bold;
         letter-spacing: 1px;
         text-decoration: none;
         display: inline-block;
@@ -442,6 +478,12 @@
     }
 
     /* ---------- TABLES ---------- */
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -594,11 +636,41 @@
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 992px) {
-        .yorha-nav {
+
+        /* show hamburger button */
+        .nav-toggle {
+            display: flex;
+        }
+
+        /* hide links by default on mobile */
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--yorha-bg);
             flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 25px;
+            gap: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--yorha-dark);
+        }
+
+        /* show links when toggled open */
+        .nav-links.nav-open {
+            display: flex;
+        }
+
+        .nav-links a {
+            width: 100%;
+            min-width: unset;
+            border-left: none;
+            border-bottom: 1px solid rgba(87, 82, 71, .15);
+            padding: 14px 24px;
+        }
+
+        .nav-links a::after {
+            display: none;
         }
 
         .title-row {
@@ -635,6 +707,10 @@
     }
 
     @media (max-width: 576px) {
+        .yorha-nav {
+            padding: 18px 20px;
+        }
+
         .container-fluid {
             padding-left: 20px;
             padding-right: 20px;

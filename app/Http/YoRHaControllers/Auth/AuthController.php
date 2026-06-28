@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\YoRHaControllers;
+namespace App\Http\YoRHaControllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\YoRHaControllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\YoRHaUnit;
 use Illuminate\Http\Request;
@@ -15,13 +15,13 @@ class AuthController extends Controller
     // GET /Landing page
     public function landing()
     {
-        return view('operations.landing');
+        return view('auth.landing');
     }
 
     // GET /login
     public function loginForm()
     {
-        return view('operations.login');
+        return view('auth.login');
     }
 
     /**
@@ -58,7 +58,7 @@ class AuthController extends Controller
     // GET /register
     public function registerForm()
     {
-        return view('operations.register');
+        return view('auth.register');
     }
 
     /**

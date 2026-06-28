@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\YoRHaControllers;
+namespace App\Http\YoRHaControllers\Hub;
 
-use App\Http\Controllers\Controller;
+use App\Http\YoRHaControllers\Controller;
 use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
@@ -42,7 +42,7 @@ class ArchiveController extends Controller
 
     public function index()
     {
-        return view('operations.archives', [
+        return view('archives.archives', [
             'entries' => $this->entries,
         ]);
     }
@@ -55,7 +55,7 @@ class ArchiveController extends Controller
             abort(404, 'Archive entry not found.');
         }
 
-        return view('operations.archives-show', [
+        return view('archives.archives-show', [
             'key' => $key,
             'entry' => $entry,
         ]);

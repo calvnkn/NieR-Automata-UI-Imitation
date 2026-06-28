@@ -14,14 +14,14 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    @include('operations.styles')
+    @include('partials.styles')
 </head>
 
 <body>
 
-    @include('operations.nav')
+    @include('partials.nav')
 
-    <div class="container-fluid py-5 px-5">
+    <div class="container-fluid py-4 px-3 px-md-4 px-lg-5">
 
         <div class="title-row">
             <h1 class="title"> MISSIONS </h1>
@@ -33,9 +33,9 @@
             Complete missions to earn rewards and unlock further operations.
         </p>
 
-        <div class="row g-4">
+        <div class="row g-3 g-md-4">
             @foreach ($missions as $key => $mission)
-                <div class="col-lg-4 col-md-6">
+                <div class="col-12 col-md-6 col-lg-4">
                     <div class="operation-card">
                         <div class="card-header"> {{ $mission['name'] }} </div>
                         <div class="card-body">
@@ -70,7 +70,8 @@
 
     </div>
 
-    @include('operations.footer')
+    @include('partials.footer')
+
 </body>
 
 </html>

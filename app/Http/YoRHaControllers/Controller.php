@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\YoRHaControllers;
 
 use Illuminate\Routing\Controller as BaseController;
 

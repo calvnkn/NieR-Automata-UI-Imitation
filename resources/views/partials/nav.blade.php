@@ -3,7 +3,13 @@
         <img src="{{ asset('pngegg.png') }}" alt="YoRHa Logo">
     </div>
 
-    <div class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
         <a href="{{ route('bunker.index') }}" class="{{ request()->routeIs('bunker.*') ? 'active' : '' }}"> BUNKER </a>
         <a href="{{ route('missions.index') }}" class="{{ request()->routeIs('missions.*') ? 'active' : '' }}"> MISSIONS </a>
         <a href="{{ route('inventory.index') }}" class="{{ request()->routeIs('inventory.*') ? 'active' : '' }}"> INVENTORY </a>
@@ -17,3 +23,13 @@
 <div class="pattern">
     <div class="pattern-inner"></div>
 </div>
+
+<script>
+    const toggle = document.getElementById('nav-toggle');
+    const links  = document.getElementById('nav-links');
+
+    toggle.addEventListener('click', () => {
+        links.classList.toggle('nav-open');
+        toggle.classList.toggle('nav-toggle-open');
+    });
+</script>

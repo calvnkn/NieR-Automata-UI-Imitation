@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\YoRHaControllers;
+namespace App\Http\YoRHaControllers\Hub;
 
-use App\Http\Controllers\Controller;
+use App\Http\YoRHaControllers\Controller;
 use Illuminate\Http\Request;
 
 class WeaponController extends Controller
@@ -60,7 +60,7 @@ class WeaponController extends Controller
 
     public function index()
     {
-        return view('operations.weapons', [
+        return view('weapons.weapons', [
             'weapons' => $this->weapons,
         ]);
     }

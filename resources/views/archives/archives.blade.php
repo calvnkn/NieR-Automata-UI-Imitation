@@ -14,14 +14,14 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    @include('operations.styles')
+    @include('partials.styles')
 </head>
 
 <body>
 
-    @include('operations.nav')
+    @include('partials.nav')
 
-    <div class="container-fluid py-5 px-5">
+    <div class="container-fluid py-4 px-3 px-md-4 px-lg-5">
 
         <div class="title-row">
             <h1 class="title"> ARCHIVES </h1>
@@ -36,7 +36,7 @@
 
         <div class="yorha-panel">
             <div class="panel-header"> ■ RECORDS </div>
-            <div class="panel-body">
+            <div class="table-responsive">
                 <table>
                     <tr>
                         <th> Title </th>
@@ -71,7 +71,8 @@
 
     </div>
 
-    @include('operations.footer')
+    @include('partials.footer')
+
 </body>
 
 </html>

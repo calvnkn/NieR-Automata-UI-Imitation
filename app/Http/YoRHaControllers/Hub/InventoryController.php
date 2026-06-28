@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\YoRHaControllers;
+namespace App\Http\YoRHaControllers\Hub;
 
-use App\Http\Controllers\Controller;
+use App\Http\YoRHaControllers\Controller;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
@@ -26,7 +26,7 @@ class InventoryController extends Controller
 
     public function index()
     {
-        return view('operations.inventory', [
+        return view('inventory.inventory', [
             'items' => $this->items,
             'plugins' => $this->plugins,
         ]);

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\YoRHaControllers;
+namespace App\Http\YoRHaControllers\Hub;
 
-use App\Http\Controllers\Controller;
+use App\Http\YoRHaControllers\Controller;
 
 class BunkerController extends Controller
 {
@@ -72,7 +72,7 @@ class BunkerController extends Controller
 
     public function index()
     {
-        return view('operations.bunker', [
+        return view('bunker.bunker', [
             'facilities' => $this->facilities,
             'crew' => $this->crew,
             'resources' => $this->resources,

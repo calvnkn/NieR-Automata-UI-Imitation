@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\YoRHaControllers;
+namespace App\Http\YoRHaControllers\Hub;
 
-use App\Http\Controllers\Controller;
+use App\Http\YoRHaControllers\Controller;
 use Illuminate\Http\Request;
 
 class SystemController extends Controller
@@ -33,7 +33,7 @@ class SystemController extends Controller
 
     public function index()
     {
-        return view('operations.system', [
+        return view('system.system', [
             'diagnostics' => $this->diagnostics,
             'resources' => $this->resources,
             'logs' => $this->logs,

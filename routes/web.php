@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\YoRHaControllers\AuthController;
-use App\Http\YoRHaControllers\OperationController;
-use App\Http\YoRHaControllers\BunkerController;
-use App\Http\YoRHaControllers\MissionController;
-use App\Http\YoRHaControllers\InventoryController;
-use App\Http\YoRHaControllers\WeaponController;
-use App\Http\YoRHaControllers\ArchiveController;
-use App\Http\YoRHaControllers\SystemController;
+use App\Http\YoRHaControllers\Auth\AuthController;
+use App\Http\YoRHaControllers\Hub\OperationController;
+use App\Http\YoRHaControllers\Hub\BunkerController;
+use App\Http\YoRHaControllers\Hub\MissionController;
+use App\Http\YoRHaControllers\Hub\InventoryController;
+use App\Http\YoRHaControllers\Hub\WeaponController;
+use App\Http\YoRHaControllers\Hub\ArchiveController;
+use App\Http\YoRHaControllers\Hub\SystemController;
 use Illuminate\Support\Facades\Route;
 
 // Landing and auth routes
